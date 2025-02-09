@@ -5,10 +5,14 @@
 * Minikube
 * Kubectl
 * Helm
+* Kustomize
+* ArgoCD
 
 ## What is ArgoCD?
 ArgoCD is a GitOps or Continous Delivery(CD) tool that ensures that the git state remains synchronized with the K8s state.
 
+## Architecture
+![architecture](/images/quotes-argocd/images/Untitled-2023-03-01-2339.png)
 
 ## Getting started
 ### 1. Make sure Docker hub is running
