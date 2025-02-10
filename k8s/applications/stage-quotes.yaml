@@ -1,12 +1,12 @@
 ---
-# k8s/applications/stage-quotes.yaml
+# backend
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: quotes-stage
-  #namespace: argocd
+  name: quotes-stage-backend
+  namespace: argo-cd
   annotations:
-    argocd-image-updater.argoproj.io/image-list: thabelo/quotes-frontend:~v0.1
+    argocd-image-updater.argoproj.io/image-list: thabelo/quotes-backend:~v0.1
     argocd-image-updater.argoproj.io/write-back-method: git
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -15,10 +15,10 @@ spec:
   source:
     repoURL: https://github.com/Thab310/quotes-infrastructure.git
     targetRevision: main
-    path: overlays/stage
+    path: overlays/stage/quotes-backend
   destination:
     server: https://kubernetes.default.svc
-    namespace: quotes-stage
+    namespace: stage
   syncPolicy:
     automated:
       prune: true
@@ -29,3 +29,33 @@ spec:
     - PrunePropagationPolicy=foreground
     - PruneLast=true
 
+---
+# frontend
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: quotes-stage-frontend
+  namespace: argo-cd
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: thabelo/quotes-frontend:~v0.1
+    argocd-image-updater.argoproj.io/write-back-method: git
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Thab310/quotes-infrastructure.git
+    targetRevision: main
+    path: overlays/stage/quotes-frontend
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: stage
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - Validate=true
+    - CreateNamespace=true
+    - PrunePropagationPolicy=foreground
+    - PruneLast=true
