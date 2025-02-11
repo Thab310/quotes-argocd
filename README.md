@@ -51,17 +51,18 @@ Follow the process and make sure to store the bot token safely because you will 
 
 ![slack-1](/images/slack-1)
 
-![slack-1](/images/slack-2)
+![slack-2](/images/slack-2)
 
-![slack-1](/images/slack-3)
+![slack-3](/images/slack-3)
 
-![slack-1](/images/slack-4)
+![slack-4](/images/slack-4)
 
-![slack-1](/images/slack-5)
+![slack-6](/images/slack-5)
 
 Now create a channel "#alerts" under the workspace that has your slack bot. 
 Invite the bot into the channel but tagging it in a message.
-![slack-1](/images/slack-6)
+
+![slack-6](/images/slack-6)
 ### Create Hashicorp vault secrets
 In this project I will be using Vault as my secret store.
 ```bash
