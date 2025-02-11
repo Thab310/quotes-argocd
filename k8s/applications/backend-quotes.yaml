@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: quotes-prod-backend
+  name: quotes-backend
   namespace: argo-cd
   annotations:
     argocd-image-updater.argoproj.io/image-list: thabelo/quotes-backend:~v0.1
