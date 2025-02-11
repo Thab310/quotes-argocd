@@ -98,7 +98,7 @@ vault kv put secret/argocd-notifications-secret \
 ![node](/images/helm-repo.png)
 
 ### Installation of helm charts :)
-![TIP]
+>[TIP]
  Instead of of using the traditional approach of installing helm charts using helm cli commands we will take a step further by using terraform and helm providers
 
 
@@ -134,7 +134,7 @@ Confirm installation of ArgoCD Helm chart in specified namespace.
 ![node](/images/argo-dashboard.png)
 
 ### Accessing the application
-![NOTE]
+>[!NOTE]
 Minikube is running in an isolated docker environment so we need a way to expose services within the cluster. 
 ```bash
 kubectl get svc
