@@ -1,0 +1,15 @@
+---
+global:
+  image:
+    tag: "v2.14.2"
+
+server:
+  extraArgs:
+    - --insecure
+
+notifications:
+  enabled: true
+  secret:
+    create: false
+  cm: 
+    create: false  
