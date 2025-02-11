@@ -16,10 +16,10 @@ resource "kubernetes_secret" "github_secret" {
   }
 
   data = {
-    url             = "git@github.com:Thab310/quotes-infrastructure.git"
+    url           = "git@github.com:Thab310/quotes-infrastructure.git"
     sshPrivateKey = data.vault_generic_secret.github_ssh_key.data["gh_ssh_private_key"]
-    insecure        = false
-     enableLfs      = false
+    insecure      = false
+    enableLfs     = false
   }
 }
 

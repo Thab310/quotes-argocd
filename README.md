@@ -81,13 +81,12 @@ vault status
 
 Retrive private ssh key:
 ```bash
-cat ~/.ssh/argocd_ed25519 | tr -d '\n'
+cat ~/.ssh/argocd_ed25519
 ```
 
 Add secrets in vault:
 ```bash
-vault kv put secret/github_ssh_key \
-  gh_ssh_private_key="-----BEGIN OPENSSH PRIVATE KEY-----\n...your_private_key...\n-----END OPENSSH PRIVATE KEY-----"
+vault kv put secret/github_ssh_key gh_ssh_private_key="$(cat ~/.ssh/argocd_ed25519)"
 ```
 
 ```bash
@@ -133,3 +132,13 @@ Confirm installation of ArgoCD Helm chart in specified namespace.
 2. Access the dashboard on localhost port 8080. The `username` is `admi`n and `password` is contents of base64 decoded secret `argocd-initial-admin-secret` in ns `argo-cd`.
 
 ![node](/images/argo-dashboard.png)
+
+### Accessing the application
+![NOTE]
+Minikube is running in an isolated docker environment so we need a way to expose services within the cluster. 
+```bash
+kubectl get svc
+
+#Run this command to expose it to your local machine
+minikube service <svc> --url 
+```
