@@ -13,7 +13,7 @@
 ArgoCD is a GitOps or Continous Delivery(CD) tool that ensures that the git state remains synchronized with the K8s state.
 
 ## Architecture
-![architecture](/images/Untitled-2025-02-10-0022.png)
+![architecture](/images/Untitled-2023-03-01-2339.png)
 ## Project Structure
 I decided to split the project into 3 different repos [Frontend](https://github.com/Thab310/frontend), [Backend](https://github.com/Thab310/quotes-backend) and [K8s Infrastructure](https://github.com/Thab310/quotes-infrastructure).
 
@@ -98,7 +98,7 @@ vault kv put secret/argocd-notifications-secret \
 ![node](/images/helm-repo.png)
 
 ### Installation of helm charts :)
->[TIP]
+>[!TIP]
  Instead of of using the traditional approach of installing helm charts using helm cli commands we will take a step further by using terraform and helm providers
 
 
