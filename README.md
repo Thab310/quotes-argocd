@@ -41,7 +41,7 @@ ssh-keygen -t ed25519 -C "argocd@thab310.com" -f ~/.ssh/argocd_ed25519
 ```
 * Then upload the public key located at `~/.ssh/argocd_ed25519.pub` to [K8s Infrastructure repository](https://github.com/Thab310/quotes-infrastructure)
 
-![pub-key](/images/gh-pub-key)
+![pub-key](/images/gh-pub-key.png)
 
 * The private key will be used ArgoCD in order to Authenticate with [K8s Infrastructure repository](https://github.com/Thab310/quotes-infrastructure)
 
@@ -49,20 +49,20 @@ ssh-keygen -t ed25519 -C "argocd@thab310.com" -f ~/.ssh/argocd_ed25519
 [How to create a slack application](https://api.slack.com/docs/apps)
 Follow the process and make sure to store the bot token safely because you will need to store it as a secret inside Hashicorp vault.
 
-![slack-1](/images/slack-1)
+![slack-1](/images/slack-1.png)
 
-![slack-2](/images/slack-2)
+![slack-2](/images/slack-2.png)
 
-![slack-3](/images/slack-3)
+![slack-3](/images/slack-3.png)
 
-![slack-4](/images/slack-4)
+![slack-4](/images/slack-4.png)
 
-![slack-6](/images/slack-5)
+![slack-6](/images/slack-5.png)
 
 Now create a channel "#alerts" under the workspace that has your slack bot. 
 Invite the bot into the channel but tagging it in a message.
 
-![slack-6](/images/slack-6)
+![slack-6](/images/slack-6.png)
 ### Create Hashicorp vault secrets
 In this project I will be using Vault as my secret store.
 ```bash
