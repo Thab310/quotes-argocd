@@ -45,6 +45,23 @@ ssh-keygen -t ed25519 -C "argocd@thab310.com" -f ~/.ssh/argocd_ed25519
 
 * The private key will be used ArgoCD in order to Authenticate with [K8s Infrastructure repository](https://github.com/Thab310/quotes-infrastructure)
 
+### Create a Slack Application
+[How to create a slack application](https://api.slack.com/docs/apps)
+Follow the process and make sure to store the bot token safely because you will need to store it as a secret inside Hashicorp vault.
+
+![slack-1](/images/slack-1)
+
+![slack-1](/images/slack-2)
+
+![slack-1](/images/slack-3)
+
+![slack-1](/images/slack-4)
+
+![slack-1](/images/slack-5)
+
+Now create a channel "#alerts" under the workspace that has your slack bot. 
+Invite the bot into the channel but tagging it in a message.
+![slack-1](/images/slack-6)
 ### Create Hashicorp vault secrets
 In this project I will be using Vault as my secret store.
 ```bash
@@ -70,6 +87,11 @@ Add secrets in vault:
 ```bash
 vault kv put secret/github_ssh_key \
   gh_ssh_private_key="-----BEGIN OPENSSH PRIVATE KEY-----\n...your_private_key...\n-----END OPENSSH PRIVATE KEY-----"
+```
+
+```bash
+vault kv put secret/argocd-notifications-secret \
+  slack-token="********"
 ```
 
 ### 3. Setup ArgoCD Helm repository
