@@ -8,12 +8,15 @@ metadata:
   annotations:
     argocd-image-updater.argoproj.io/image-list: thabelo/quotes-backend:~v0.1
     argocd-image-updater.argoproj.io/write-back-method: git
+    notifications.argoproj.io/subscribe.on-deployed.slack: alerts
+    notifications.argoproj.io/subscribe.on-sync-failed.slack: alerts
+    #notifications.argoproj.io/subscribe.on-sync-succeeded.slack: alerts
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    repoURL: https://github.com/Thab310/quotes-infrastructure.git
+    repoURL: git@github.com:Thab310/quotes-infrastructure.git
     targetRevision: main
     path: overlays/dev/quotes-backend
   destination:
@@ -23,6 +26,7 @@ spec:
     automated:
       prune: true
       selfHeal: true
+      allowEmpty: false
     syncOptions:
     - Validate=true
     - CreateNamespace=true
@@ -43,7 +47,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/Thab310/quotes-infrastructure.git
+    repoURL: git@github.com:Thab310/quotes-infrastructure.git
     targetRevision: main
     path: overlays/dev/quotes-frontend
   destination:
